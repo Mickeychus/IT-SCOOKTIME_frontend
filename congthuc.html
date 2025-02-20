@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Restaurant Website</title>
+    <link rel="stylesheet" href="congthuc.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo"><img src="anh/logo.png" alt="logo">It's<span>cooktime</span></div>
+            <div class="search-bar">
+                <input type="text" id="search" placeholder="Tìm kiếm công thức...">
+                <img src="anh/search.png" alt="Tìm kiếm" class="search-icon">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="chinh.html">Trang chủ</a></li>
+                    <li><a href="about.html">Giới thiệu</a></li>
+                    <li><a href="contact.html">Liên hệ</a></li>
+                    <div id="login-section">
+                        <li><a href="dangki.html">Đăng ký/ Đăng nhập</a></li> <!-- Link đến trang đăng ký -->
+                    </div>
+                    <div id="logout-section" style="display: none;">
+                        <div class="profile-container">
+                            <img src="anh/daidien.jpg" alt="Profile Picture" id="profile-img">
+                            <ul id="dropdown-menu" class="dropdown-menu" style="display: none;">
+                                <li><button id="logout-btn">Đăng xuất</button></li>
+                            </ul>
+                        </div>
+                    </div>                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <main>
+        <!-- Recipe Section -->
+        <div class="recipe-container">
+            <div class="recipe-header">
+                <h1>Sashimi Cá Ngừ</h1>
+                <div class="recipe-info">
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <span>15 min.</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-hat-chef"></i>
+                        <span>Easy</span>
+                        <span id="rating-score">4.5/5</span>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Recipe Content Section: Mô tả món ăn và video -->
+            <div class="recipe-content">
+                <!-- Mô tả món ăn và hình ảnh minh họa ở bên trái -->
+                <div class="recipe-description">
+                    <p>Sashimi là một món ăn tinh tế của Nhật Bản, gồm cá hoặc thịt tươi sống, cắt lát mỏng và thường được ăn kèm với nước tương.</p>
+                    <!-- Ảnh minh họa món ăn -->
+                    <div class="recipe-image">
+                        <img src="anh/anh2.jfif" alt="Tuna Sashimi">
+                    </div>
+                </div>
+    
+                <!-- Video Section -->
+                <div class="recipe-video">
+                    <video width="100%" controls>
+                        <source src="anh/vdminhhoa1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <button class="save-btn">Lưu vào Cookbook</button>
+                </div>
+            </div>
+    
+            <!-- Quantity Selector -->
+            <div class="quantity-selector">
+                <button class="qty-btn" id="qty-decrease">-</button>
+                <span id="qty-value">2 phần/người</span>
+                <button class="qty-btn" id="qty-increase">+</button>
+            </div>
+    
+            <!-- Ingredients and Directions Section -->
+            <div class="recipe-details">
+                <div class="ingredients">
+                    <h3>Nguyên Liệu</h3>
+                        <ul>
+                            <li>500g cá ngừ loại sashimi</li>
+                            <li>2 quả bơ, cắt phần thịt thành lát dày</li>
+                            <li>Nước tương để chấm</li>
+                        </ul>
+
+                </div>
+                <div class="tools">
+                    <h3>Dụng Cụ</h3>
+                    <ul>
+                        <li>Dao sắc</li>
+                        <li>Thớt</li>
+                    </ul>
+
+                </div>
+                <div class="directions">
+                    <h3>Hướng Dẫn</h3>
+                    <ol>
+                        <li>Chuẩn bị cá ngừ bằng cách cắt thành các lát mỏng.</li>
+                        <li>Xếp các lát cá ngừ và bơ lên đĩa.</li>
+                        <li>Dùng kèm với nước tương và thưởng thức!</li>
+                    </ol>
+
+                </div>
+            </div>
+            <div class="rating-comment-section">
+                <h3>Đánh giá món ăn</h3>
+                <div class="rating-stars">
+                    <i class="fas fa-star" data-rating="1"></i>
+                    <i class="fas fa-star" data-rating="2"></i>
+                    <i class="fas fa-star" data-rating="3"></i>
+                    <i class="fas fa-star" data-rating="4"></i>
+                    <i class="fas fa-star" data-rating="5"></i>
+                </div>
+                <textarea id="comment-box" placeholder="Viết bình luận của bạn..."></textarea>
+                <button id="submit-comment">Gửi bình luận</button>
+            </div>
+    
+            <div class="comments-section">
+                <ul id="comments-list"></ul> <!-- Nơi hiển thị các bình luận -->
+            </div>
+    
+            <!-- Thêm nút báo cáo -->
+            <button id="report-btn" class="report-btn">Báo cáo sai phạm</button>
+        </div>
+        </div>
+    </main>
+    
+  <!-- Form modal báo cáo sai phạm -->
+    <div id="report-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-report" class="close">&times;</span>
+            <h2>Gửi Báo Cáo</h2>
+            <form id="report-form">
+                <label for="report-name">Tên:</label>
+                <input type="text" id="report-name" required>
+
+                <label for="report-email">Email:</label>
+                <input type="email" id="report-email" required>
+
+                <label for="report-reason">Lý do báo cáo:</label>
+                <textarea id="report-reason" required></textarea>
+
+                <button type="submit">Gửi Báo Cáo</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h2>Về Chúng Tôi</h2>
+                <p>
+                    Chúng tôi là trang web chuyên chia sẻ các công thức nấu ăn, mẹo vặt ẩm thực, và những trải nghiệm ăn uống thú vị từ khắp nơi trên thế giới. Cùng khám phá và nấu những món ăn ngon với chúng tôi!
+                </p>
+            </div>
+
+            <div class="footer-section contact">
+                <h2>Liên Hệ</h2>
+                <p><i class="fas fa-envelope"></i> Email: contact@foodwebsite.com</p>
+                <p><i class="fas fa-phone"></i> Điện thoại: 0123-456-789</p>
+                <p><i class="fas fa-map-marker-alt"></i> Địa chỉ: 123 Đường Ăn Uống, Quận 5, TP. Hồ Chí Minh</p>
+                <p><i class="fas fa-clock"></i> Giờ làm việc: Thứ 2 - Thứ 6, 9:00 - 18:00</p>
+            </div>
+
+            <div class="footer-section newsletter">
+                <h2>Đăng Ký Nhận Tin</h2>
+                <p>Nhận công thức nấu ăn và mẹo vặt hàng tuần từ chúng tôi!</p>
+                <form action="#">
+                    <input type="email" placeholder="Nhập email của bạn" required>
+                    <button type="submit" class="btn">Đăng Ký</button>
+                </form>
+            </div>
+
+            <div class="footer-section links">
+                <h2>Liên Kết Nhanh</h2>
+                <ul>
+                    <li><a href="#">Công Thức Mới Nhất</a></li>
+                    <li><a href="#">Bài Viết Phổ Biến</a></li>
+                    <li><a href="#">Khuyến Mãi Đặc Biệt</a></li>
+                    <li><a href="#">Chính Sách Bảo Mật</a></li>
+                    <li><a href="#">Điều Khoản Dịch Vụ</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 FoodWebsite | Mọi quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script src="congthuc.js"></script>
+</body>
+</html>
